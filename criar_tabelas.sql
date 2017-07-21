@@ -77,19 +77,19 @@ CREATE TABLE Lavanderia(
     id_lavanderia int,
     PRIMARY KEY(id_lavanderia),
     CONSTRAINT lavanderiaCE FOREIGN KEY (id_lavanderia) references Servico(id_serv)
-)
+);
 
 CREATE TABLE Passeio_Turistico(
     id_passeio int,
     PRIMARY KEY(id_passeio),
     CONSTRAINT passeioCE FOREIGN KEY (id_passeio) references Servico(id_serv)
-)
+);
 
 CREATE TABLE Frigobar(
     id_frigobar int,
     PRIMARY KEY(id_frigobar),
     CONSTRAINT frigobarCE FOREIGN KEY (id_frigobar) references Servico(id_serv)
-)
+);
 
 
 CREATE SEQUENCE id_Quarto_Seq;
