@@ -38,7 +38,7 @@ CREATE TABLE Dependente(
     nome VARCHAR(30) NOT NULL,
     data_nascimento DATE,
     PRIMARY KEY (CPF),
-    CONSTRAINT responsavel FOREIGN KEY (CPF_responsavel) references CLiente(CPF) ON DELETE CASCADE
+    CONSTRAINT responsavel FOREIGN KEY (CPF_responsavel) references Cliente(CPF) ON DELETE CASCADE
 );
 
 CREATE TABLE Nota_Fiscal(
@@ -55,9 +55,9 @@ CREATE TABLE Nota_Fiscal(
 );
 
 CREATE TABLE Servico(
-    id_serv int,
+    id int,
     valor NUMERIC(10,2) NOT NULL,
-    PRIMARY KEY (id_serv),
+    PRIMARY KEY (id),
     CONSTRAINT checkValorServ CHECK (valor>=0)
 );
 
@@ -68,31 +68,74 @@ CREATE TABLE Produto(
     valor NUMERIC(10,2) NOT NULL,
     id_servico int NOT NULL,
     PRIMARY KEY (id_prod),
-    CONSTRAINT servicoCE FOREIGN KEY (id_servico) references Servico(id_serv),
+    CONSTRAINT servicoCE FOREIGN KEY (id_servico) references Servico(id),
     CONSTRAINT checkValorProd CHECK (valor>=0)
 );
 
 
 CREATE TABLE Lavanderia(
-    id_lavanderia int,
-    PRIMARY KEY(id_lavanderia),
-    CONSTRAINT lavanderiaCE FOREIGN KEY (id_lavanderia) references Servico(id_serv)
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT lavanderiaCE FOREIGN KEY (id) references Servico(id)
 );
 
 CREATE TABLE Passeio_Turistico(
-    id_passeio int,
-    PRIMARY KEY(id_passeio),
-    CONSTRAINT passeioCE FOREIGN KEY (id_passeio) references Servico(id_serv)
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT passeioCE FOREIGN KEY (id) references Servico(id)
 );
 
 CREATE TABLE Frigobar(
-    id_frigobar int,
-    PRIMARY KEY(id_frigobar),
-    CONSTRAINT frigobarCE FOREIGN KEY (id_frigobar) references Servico(id_serv)
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT frigobarCE FOREIGN KEY (id) references Servico(id)
 );
 
+CREATE TABLE Restaurante(
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT restauranteCE FOREIGN KEY(id) references Servico(id)
+);
+
+CREATE TABLE Estacionamento(
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT estacionamentoCE FOREIGN KEY (id) references Servico(id)
+);
+
+CREATE TABLE Bar(
+    id int,
+    PRIMARY KEY(id),
+    CONSTRAINT barCE FOREIGN KEY (id) references Servico(id)
+);
+
+CREATE TABLE Venda(
+    CPF_cliente char(11),
+    id_produto integer not null,
+    data DATE,
+    qualidade varchar2(8),
+    PRIMARY KEY(CPF_cliente, id_produto),
+    
+    CONSTRAINT clienteCE FOREIGN KEY (CPF_cliente) references Cliente(CPF),
+    CONSTRAINT produtoCE FOREIGN KEY (id_produto) references Produto(id_prod)
+);
+
+CREATE TABLE Telefone_Cliente(
+    CPF_cliente char(11),
+    telefone VARCHAR(15),
+    PRIMARY KEY(CPF_cliente, telefone),
+    CONSTRAINT clienteDonoCE FOREIGN KEY (CPF_cliente) references Cliente(CPF)
+);
+
+CREATE TABLE Prestacao(
+    CPF_funcionario char(11),
+    id_servico int,
+    
+    PRIMARY KEY( CPF_funcionario, id_servico),
+    CONSTRAINT funcionarioCE FOREIGN KEY (CPF_funcionario) references Cliente(CPF),
+    CONSTRAINT servicoPrestadoCE FOREIGN KEY (id_servico) references Servico(id)
+);
 
 CREATE SEQUENCE id_Quarto_Seq;
 CREATE SEQUENCE id_NF_Seq;
 CREATE SEQUENCE id_Prod_Seq;
-
