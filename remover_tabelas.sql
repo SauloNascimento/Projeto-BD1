@@ -4,15 +4,22 @@ DROP TABLE Nota_Fiscal;
 
 DROP TABLE Telefone_Cliente;
 
-DROP TABLE Cliente;
+DROP TABLE Reserva;
+
+DROP TABLE Hospedagem;
+
+DROP TABLE Avaliacao;
+
+DROP TABLE Prestacao;
 
 DROP TABLE Venda;
+
+DROP TABLE Cliente;
 
 DROP TABLE Quarto;
 
 DROP TABLE Produto;
 
-DROP TABLE Prestacao;
 
 DROP TABLE Lavanderia;
 
