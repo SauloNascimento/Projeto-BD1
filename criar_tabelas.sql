@@ -109,12 +109,50 @@ CREATE TABLE Bar(
     CONSTRAINT barCE FOREIGN KEY (id) references Servico(id)
 );
 
+CREATE TABLE Reserva(
+	CPF_cliente	char(11) NOT NULL,
+	id_quarto	int NOT NULL,
+	data_inicio	DATE,
+	data_fim	DATE,
+
+	PRIMARY KEY (CPF_cliente,id_quarto),
+
+	CONSTRAINT fk_Cliente FOREIGN KEY (CPF_cliente) references Cliente(CPF),
+	CONSTRAINT fk_Quarto FOREIGN KEY (id_quarto) references Quarto(id)
+
+);
+
+CREATE TABLE Hospedagem(
+	CPF_cliente	char(11) NOT NULL,
+	id_quarto	int NOT NULL,
+	data_inicio	DATE,
+	data_fim	DATE,
+
+	PRIMARY KEY (CPF_cliente,id_quarto),
+
+	CONSTRAINT clienteH FOREIGN KEY (CPF_cliente) references Cliente(CPF),
+	CONSTRAINT quartoH FOREIGN KEY (id_quarto) references Quarto(id)
+);
+
+CREATE TABLE Avaliacao(
+	CPF_cliente	char(11) NOT NULL ,
+	id_servico	int NOT NULL ,
+	nota		int CHECK(nota >= 0 AND nota <= 10),
+	comentario	VARCHAR(255),
+	
+	PRIMARY KEY (CPF_cliente,id_servico),
+
+	CONSTRAINT clienteA FOREIGN KEY (CPF_cliente) references Cliente(CPF),
+	CONSTRAINT servicoA FOREIGN KEY (id_servico) references Servico(id)
+	 
+);
+
 CREATE TABLE Venda(
     CPF_cliente char(11),
     id_produto integer not null,
     data DATE,
     qualidade varchar2(8),
-    PRIMARY KEY(CPF_cliente, id_produto),
+    PRIMARY KEY(CPF_cliente),
     
     CONSTRAINT clienteCE FOREIGN KEY (CPF_cliente) references Cliente(CPF),
     CONSTRAINT produtoCE FOREIGN KEY (id_produto) references Produto(id_prod)
