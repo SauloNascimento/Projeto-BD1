@@ -73,6 +73,9 @@ VALUES('07/01/2017', '07/10/2017', '33333333311', 3);
 INSERT INTO reserva
 VALUES('08/17/2016', '08/24/2016', '55555555511', 4);
 
+INSERT INTO reserva
+VALUES('01/11/2014', '01/20/2014', '11111111111', 5);
+
 INSERT INTO servico
 VALUES(1, 300.00);
 
@@ -87,6 +90,52 @@ VALUES(4, 500.00);
 
 INSERT INTO servico
 VALUES(5, 750.00);
+
+INSERT INTO servico
+VALUES(6, 200.00);
+
+INSERT INTO servico
+VALUES(7, 300.00);
+
+INSERT INTO servico
+VALUES(8, 220.00);
+
+INSERT INTO servico
+VALUES(9, 500.00);
+
+INSERT INTO servico
+VALUES(10, 750.00);
+
+INSERT INTO servico
+VALUES(11, 50.00);
+
+INSERT INTO servico
+VALUES(12, 20.00);
+
+INSERT INTO servico
+VALUES(13, 31.00);
+
+INSERT INTO servico
+VALUES(14, 230.00);
+
+INSERT INTO servico
+VALUES(15, 50.00);
+
+INSERT INTO servico
+VALUES(16, 75.00);
+
+INSERT INTO servico
+VALUES(17, 10.00);
+
+INSERT INTO servico
+VALUES(18, 20.00);
+
+INSERT INTO servico
+VALUES(19, 300.00);
+
+INSERT INTO servico
+VALUES(20, 20.00);
+
 
 INSERT INTO funcionario
 VALUES(12345678900, 'Alfredo', 1800.00, '03/02/1974', 'Porteiro');
@@ -147,3 +196,122 @@ VALUES(12345678905, 3);
 
 INSERT INTO servico_prestado
 VALUES(12345678903, 4);
+
+INSERT INTO bar
+VALUES(1);
+
+INSERT INTO bar
+VALUES(6);
+
+INSERT INTO bar
+VALUES(7);
+
+INSERT INTO bar
+VALUES(8);
+
+INSERT INTO bar
+VALUES(9);
+
+INSERT INTO restaurante
+VALUES(2);
+
+INSERT INTO restaurante
+VALUES(3);
+
+INSERT INTO restaurante
+VALUES(10);
+
+INSERT INTO restaurante
+VALUES(11);
+
+INSERT INTO restaurante
+VALUES(12);
+
+INSERT INTO frigobar
+VALUES(4);
+
+INSERT INTO frigobar
+VALUES(13);
+
+INSERT INTO frigobar
+VALUES(14);
+
+INSERT INTO frigobar
+VALUES(15);
+
+INSERT INTO frigobar
+VALUES(16);
+
+INSERT INTO lavanderia
+VALUES(5);
+
+INSERT INTO lavanderia
+VALUES(17);
+
+INSERT INTO lavanderia
+VALUES(18);
+
+INSERT INTO lavanderia
+VALUES(19);
+
+INSERT INTO lavanderia
+VALUES(20);
+
+INSERT INTO produto(id_produto, nome, descricao, valor, id_rest, id_bar)
+VALUES(1, 'cafe', 'quente e preto', 2.50,2 ,1);
+
+INSERT INTO produto(id_produto, nome, descricao, valor, id_rest, id_frigobar)
+VALUES(2, 'refrigerante', 'coca-cola gelada', 5.00,10 ,4);
+
+INSERT INTO produto
+VALUES(3, 'lavar roupa/ gelo/ almoçar/ cerveja', 'pacote completo', 500.00, 5, 4, 3, 6);
+
+INSERT INTO produto(id_produto, nome, descricao, valor, id_bar, id_frigobar)
+VALUES(4, 'cerveja', 'gelada', 4.00, 6, 4);
+
+INSERT INTO produto(id_produto, nome, descricao, valor, id_lavanderia)
+VALUES(5, 'amaciante', 'cheroso', 3.00, 20);
+    
+INSERT INTO venda
+VALUES(1, 1, 5, '10/20/2016');
+    
+INSERT INTO venda
+VALUES(2, 3, 2, '05/06/2014');
+ 
+INSERT INTO venda
+VALUES(3, 4, 3, '01/21/2017');
+    
+INSERT INTO venda
+VALUES(4, 5, 7, '07/17/2013');
+
+INSERT INTO venda
+VALUES(5, 6, 8, '10/07/2017');
+
+INSERT INTO venda
+VALUES(2, 1, 20, '11/08/2007');
+
+INSERT INTO equipamento
+VALUES('tv', 1);
+
+INSERT INTO equipamento
+VALUES('ar condicionado', 5);
+
+INSERT INTO equipamento
+VALUES('ar condicionado', 3);
+
+INSERT INTO equipamento
+VALUES('tv', 8);
+
+INSERT INTO equipamento
+VALUES('som', 2);
+
+
+
+
+
+
+
+
+
+
+
