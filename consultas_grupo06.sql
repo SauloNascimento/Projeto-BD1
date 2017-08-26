@@ -77,17 +77,27 @@ WHERE cpf in (SELECT DISTINCT p.cpf_func
     WHERE a.nota <= all (SELECT nota FROM avaliacao) and
     a.id_servico = p.id_servico);
 
-/* Consulta 13 */
+/* Consulta 12 - Qual o último produto do bar que foi vendido? */
+SELECT  p.nome
+FROM venda v, bar b, produto p
+WHERE (v.id_produto = p.id_produto and b.id_bar=p.id_bar)
+ORDER BY v.data DESC
+FETCH FIRST 1 ROWS ONLY;
+
+
+/* Consulta 13  - Liste as reservas feitas em 2000 em quartos de vista “lateral” */
 SELECT r.*
 FROM reserva r, quarto q
-WHERE r.id_reserva = q.id_quarto and LOWER(q.vista) = 'lateral'
-        and (to_char(r.data_inicio, 'YYYY') = to_char('2000', 'YYYY') or  to_char(r.data_fim, 'YYYY') = to_char('2000', 'YYYY') );
+WHERE r.id_quarto = q.id_quarto and LOWER(q.vista) = 'lateral'
+        and (EXTRACT( YEAR FROM r.data_inicio) = '2000'
+            or EXTRACT( YEAR FROM r.data_fim) = '2000');
  
 
-/*Consulta 14 */
-SELECT q.diaria, q.id_quarto, p.nome
+/*Consulta 14 - Liste o valor da diária dos quartos que venderam produtos de lavanderia */
+SELECT q.diaria
 FROM quarto q, venda v, produto p, lavanderia l
 WHERE q.id_quarto = v.id_quarto and
         p.id_produto = v.id_produto and 
         p.id_lavanderia = l.id_lavanderia;
+
         
